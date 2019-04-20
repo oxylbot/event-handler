@@ -1,0 +1,32 @@
+{
+  "name": "commands",
+  "version": "0.0.1",
+  "description": "command handling for oxyl discord bot",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oxylbot/commands.git"
+  },
+  "keywords": [
+    "oxyl",
+    "discord",
+    "bot"
+  ],
+  "author": "oxylbot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oxylbot/commands/issues"
+  },
+  "homepage": "https://github.com/oxylbot/commands#readme",
+  "dependencies": {
+    "protobufjs": "^6.8.8",
+    "zeromq": "^5.1.0"
+  },
+  "devDependencies": {
+    "eslint": "5.14.0",
+    "eslint-config-recommended": "4.0.0"
+  }
+}
