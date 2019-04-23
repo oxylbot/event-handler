@@ -22,7 +22,7 @@ async function init() {
 		if(message.command === "ping") {
 			const msg = await bucketClient.request("createChannelMessage", {
 				channelId: message.channelId,
-				content: `PONG! Hello, ${message.author_id} in ${message.guild_id}`
+				content: `PONG! Hello, ${message.authorId} in ${message.guildId}`
 			});
 
 			console.log(msg);
