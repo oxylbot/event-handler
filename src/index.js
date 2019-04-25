@@ -28,6 +28,7 @@ async function init() {
 			guildID: message.guildId
 		};
 
+		console.log("ctx", ctx);
 		commandParser(ctx);
 	});
 
