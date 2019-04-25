@@ -27,12 +27,12 @@ module.exports.registerCommands = async () => {
 	for(const commandType of commandTypes) {
 		const commandFolder = path.resolve(__dirname, commandType);
 
-		for(const commandName of await fs.readdir(commandFolder, { encoding: "utf8" })) {
-			const command = require(path.resolve(commandFolder, commandName));
-			command.name = commandName;
+		for(const commandFile of await fs.readdir(commandFolder, { encoding: "utf8" })) {
+			const command = require(path.resolve(commandFolder, commandFile));
+			command.name = path.basename(commandFile, path.extname(commandFile));
 			command.type = commandType;
 
-			commands.set(commandName, new Command(command));
+			commands.set(command.name, new Command(command));
 		}
 	}
 
