@@ -1,3 +1,4 @@
+const commandParser = require("./commandParser");
 const path = require("path");
 const protobuf = require("protobufjs");
 
@@ -17,17 +18,20 @@ async function init() {
 
 	const commandProto = await protobuf.load(path.resolve(__dirname, "..", "protobuf", "Command.proto"));
 	commandSocket.start(commandProto);
-	commandSocket.on("message", async message => {
-		console.log(message);
-		if(message.command === "ping") {
-			const msg = await bucketClient.request("createChannelMessage", {
-				channelId: message.channelId,
-				content: `PONG! Hello, ${message.authorId} in ${message.guildId}`
-			});
+	commandSocket.on("message", message => {
+		const ctx = {
+			strippedContent: message.command,
+			bucket: bucketClient,
+			channelID: message.channelId,
+			messageID: message.id,
+			authorID: message.authorId,
+			guildID: message.guildId
+		};
 
-			console.log(msg);
-		}
+		commandParser(ctx);
 	});
+
+	commandParser.registerCommands();
 }
 
 init();
