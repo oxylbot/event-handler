@@ -7,15 +7,12 @@ const commands = new Map();
 const commandRegex = /(\w+)(?:\s+|$)(.+)?/i;
 
 module.exports = async ctx => {
-	console.log("parsing");
 	const [, command, args] = commandRegex.exec(ctx.strippedContent) || [null, null, null];
-	console.log("cmd", command);
 	if(command === null) return;
 
 	ctx.command = command;
 	ctx.rawArgs = args;
 
-	console.log(commands.has(ctx.command));
 	if(commands.has(ctx.command)) commands.get(ctx.command).run(ctx);
 };
 
@@ -35,6 +32,4 @@ module.exports.registerCommands = async () => {
 			commands.set(command.name, new Command(command));
 		}
 	}
-
-	console.log("updated commands", commands);
 };

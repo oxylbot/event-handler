@@ -16,7 +16,6 @@ class Command {
 	}
 
 	async run(ctx) {
-		console.log("running", this.name);
 		await this.runFunction(ctx);
 	}
 }
