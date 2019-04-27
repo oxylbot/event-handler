@@ -1,4 +1,4 @@
-const commandParser = require("./commandParser");
+const commandParser = require("./commands/commandParser");
 const path = require("path");
 const protobuf = require("protobufjs");
 

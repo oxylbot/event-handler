@@ -1,14 +1,14 @@
 {
-  "name": "commands",
+  "name": "event-handler",
   "version": "0.0.1",
-  "description": "command handling for oxyl discord bot",
+  "description": "event (& command) handling for oxyl discord bot",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oxylbot/commands.git"
+    "url": "git+https://github.com/oxylbot/event-handler.git"
   },
   "keywords": [
     "oxyl",
@@ -18,9 +18,9 @@
   "author": "oxylbot",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/oxylbot/commands/issues"
+    "url": "https://github.com/oxylbot/event-handler/issues"
   },
-  "homepage": "https://github.com/oxylbot/commands#readme",
+  "homepage": "https://github.com/oxylbot/event-handler#readme",
   "dependencies": {
     "protobufjs": "^6.8.8",
     "zeromq": "^5.1.0"
