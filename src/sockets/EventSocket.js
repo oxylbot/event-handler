@@ -1,7 +1,7 @@
 const EventEmitter = require("events");
 const zmq = require("zeromq");
 
-class CommandSocket extends EventEmitter {
+class EventSocket extends EventEmitter {
 	constructor() {
 		super();
 		this.socket = zmq.socket("pull");
@@ -12,11 +12,12 @@ class CommandSocket extends EventEmitter {
 
 	start(proto) {
 		this.proto = proto;
-		this.socket.connect(`tcp://commands-zmq-proxy:${process.env.COMMANDS_ZMQ_PROXY_SERVICE_PORT_PUSH}`);
+		this.socket.connect(`tcp://event-handler-zmq-proxy:${process.env.EVENT_HANDLER_ZMQ_PROXY_SERVICE_PORT_PUSH}`);
 	}
 
 	message(message) {
-		this.emit("message", this.proto.lookup("Command").decode(message));
+		// TODO
+		// this.emit("message", this.proto.lookup("Command").decode(message));
 	}
 
 	close() {
@@ -24,4 +25,4 @@ class CommandSocket extends EventEmitter {
 	}
 }
 
-module.exports = CommandSocket;
+module.exports = EventSocket;
