@@ -1,3 +1,5 @@
+const argParser = require("./args/parser");
+
 class Command {
 	constructor(command) {
 		if(!command.name) throw new Error("Command has no name");
@@ -16,7 +18,23 @@ class Command {
 	}
 
 	async run(ctx) {
-		await this.runFunction(ctx);
+		if(!ctx.guildID && this.guildOnly) {
+			await ctx.bucket.request("createChannelMessage", {
+				channelId: ctx.channelID,
+				content: "This command only works in guilds"
+			});
+		} else if(this.args.length) {
+			try {
+				ctx.args = await argParser(this, ctx);
+			} catch(err) {
+				await ctx.bucket.request("createChannelMessage", {
+					channelId: ctx.channelID,
+					content: `Error parsing arguments: ${err.message}`
+				});
+			}
+		} else {
+			await this.runFunction(ctx);
+		}
 	}
 }
 
