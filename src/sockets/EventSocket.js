@@ -18,6 +18,8 @@ class EventSocket extends EventEmitter {
 	async messageHandler() {
 		while(!this.socket.closed) {
 			const [message] = await this.socket.receive();
+
+			this.emit("message", message);
 		}
 	}
 
