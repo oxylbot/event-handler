@@ -1,6 +1,6 @@
 {
   "name": "event-handler",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "event (& command) handling for oxyl discord bot",
   "main": "src/index.js",
   "scripts": {
@@ -26,7 +26,7 @@
     "zeromq": "^6.0.0-beta.6"
   },
   "devDependencies": {
-    "eslint": "7.2.0",
+    "eslint": "7.3.0",
     "eslint-config-recommended": "4.1.0"
   }
 }
